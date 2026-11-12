@@ -16,7 +16,7 @@
     "sqlite",
     "iwt"
   ],
-  "author": "Antigravity Engineering",
+  "author": "Nurul Hasan",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
