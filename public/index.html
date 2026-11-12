@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIIT Bhubaneswar — Mess Management System</title>
+  <link rel="icon" type="image/png" href="assets/icons/brand-bowl.png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Collapsible Left Sidebar (Notion Ruled Aesthetic) -->
+    <aside class="sidebar" id="appSidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <img src="assets/icons/brand-bowl.png" alt="IIIT Mess Logo" class="brand-icon-img">
+        <div class="brand-text">
+          <h1>IIIT Bhubaneswar</h1>
+          <p>Central Dining Portal</p>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <!-- OVERVIEW -->
+        <div class="nav-section-title">Overview</div>
+        <a href="#dashboard" class="nav-item active">
+          <img src="assets/icons/dashboard.png" class="nav-item-icon" alt="">
+          <span>Dashboard</span>
+        </a>
+
+        <!-- MESS MANAGEMENT -->
+        <div class="nav-section-title">Mess Management</div>
+        <a href="#menu-today" class="nav-item">
+          <img src="assets/icons/menu-today.png" class="nav-item-icon" alt="">
+          <span>Today's Menu</span>
+        </a>
+        <a href="#menu-weekly" class="nav-item">
+          <img src="assets/icons/menu-weekly.png" class="nav-item-icon" alt="">
+          <span>Weekly Schedule</span>
+        </a>
+        <a href="#attendance" class="nav-item nav-student-only">
+          <img src="assets/icons/attendance.png" class="nav-item-icon" alt="">
+          <span>Meal Attendance</span>
+        </a>
+        <a href="#feedback" class="nav-item">
+          <img src="assets/icons/feedback.png" class="nav-item-icon" alt="">
+          <span>Food Feedback</span>
+        </a>
+        <a href="#complaints" class="nav-item">
+          <img src="assets/icons/complaints.png" class="nav-item-icon" alt="">
+          <span>Grievance Tickets</span>
+        </a>
+
+        <!-- FINANCIALS -->
+        <div class="nav-section-title nav-student-only">Financials</div>
+        <a href="#bills" class="nav-item nav-student-only">
+          <img src="assets/icons/bills.png" class="nav-item-icon" alt="">
+          <span>My Mess Bills</span>
+        </a>
+        <a href="#payments" class="nav-item nav-student-only">
+          <img src="assets/icons/payments.png" class="nav-item-icon" alt="">
+          <span>Payment History</span>
+        </a>
+
+        <!-- INFORMATION -->
+        <div class="nav-section-title">Information</div>
+        <a href="#announcements" class="nav-item">
+          <img src="assets/icons/announcements.png" class="nav-item-icon" alt="">
+          <span>Circulars</span>
+        </a>
+
+        <!-- STAFF DESK -->
+        <div class="nav-section-title nav-staff-only" style="display: none;">Catering Operations</div>
+        <a href="#staff-schedule" class="nav-item nav-staff-only" style="display: none;">
+          <img src="assets/icons/staff.png" class="nav-item-icon" alt="">
+          <span>Kitchen Desk</span>
+        </a>
+        <a href="#staff-attendance" class="nav-item nav-staff-only" style="display: none;">
+          <img src="assets/icons/attendance.png" class="nav-item-icon" alt="">
+          <span>Live Check-in</span>
+        </a>
+
+        <!-- ADMINISTRATION (Admin Only) -->
+        <div class="nav-section-title nav-admin-only" style="display: none;">Administration</div>
+        <a href="#admin-students" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/students.png" class="nav-item-icon" alt="">
+          <span>Student Roster</span>
+        </a>
+        <a href="#admin-menu" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/brand-bowl.png" class="nav-item-icon" alt="">
+          <span>Manage Menus</span>
+        </a>
+        <a href="#admin-attendance" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/attendance.png" class="nav-item-icon" alt="">
+          <span>Attendance Mgmt</span>
+        </a>
+        <a href="#admin-billing" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/bills.png" class="nav-item-icon" alt="">
+          <span>Billing & Rebates</span>
+        </a>
+        <a href="#admin-complaints" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/complaints.png" class="nav-item-icon" alt="">
+          <span>Resolution Desk</span>
+        </a>
+        <a href="#admin-expenses" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/expenses.png" class="nav-item-icon" alt="">
+          <span>Expense Logs</span>
+        </a>
+        <a href="#admin-analytics" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/analytics.png" class="nav-item-icon" alt="">
+          <span>Analytics & Audit</span>
+        </a>
+        <a href="#admin-settings" class="nav-item nav-admin-only" style="display: none;">
+          <img src="assets/icons/settings.png" class="nav-item-icon" alt="">
+          <span>Mess Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar User Footer -->
+      <div class="sidebar-footer">
+        <div class="user-snippet" id="userProfileBtn">
+          <img src="assets/icons/user.png" class="user-avatar-img" id="sidebarUserAvatar" alt="User">
+          <div class="user-info">
+            <div class="user-name" id="sidebarUserName">Loading...</div>
+            <div class="user-role-badge" id="sidebarUserRole">Student</div>
+          </div>
+          <span style="font-size: 11px; color: var(--text-tertiary);">▾</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+
+      <!-- Sticky Topbar (Elevation: 0px 0.7px 1.462px / 0px 3px 9px) -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle navigation menu">
+            ☰
+          </button>
+          <div class="page-title-box">
+            <h2 id="pageTitle">Dashboard</h2>
+            <div class="page-breadcrumb" id="pageSubtitle">Overview & Daily Mess Summary</div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Current Date Indicator -->
+          <div class="current-date-badge" id="topbarDateBadge">
+            <img src="assets/icons/menu-weekly.png" style="width: 15px; height: 15px; object-fit: contain;" alt="">
+            <span>Loading...</span>
+          </div>
+
+          <!-- Theme Toggle Button -->
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle light and dark theme">
+            <img src="assets/icons/moon.png" id="themeIconImg" class="topbar-icon-img" alt="Theme">
+          </button>
+
+          <!-- Notification Bell -->
+          <div style="position: relative;">
+            <button class="icon-btn" id="notifToggleBtn" title="Notifications" aria-label="View notifications">
+              <img src="assets/icons/notifications.png" class="topbar-icon-img" alt="Notifications">
+              <span class="badge-counter" id="notifBadge" style="display: none;">0</span>
+            </button>
+            <div class="dropdown-menu" id="notifDropdown" style="right: 0; top: 44px; width: 340px;">
+              <!-- Rendered via notifications.js -->
+            </div>
+          </div>
+
+          <!-- User Profile Dropdown -->
+          <div style="position: relative;">
+            <div class="dropdown-menu" id="userProfileDropdown" style="right: 0; top: 44px; width: 220px;">
+              <div style="padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);">
+                <div style="font-weight: 700; font-size: 13px;" id="dropdownUserName">User Account</div>
+                <div style="font-size: 11px; color: var(--text-tertiary);" id="dropdownUserRole">IIIT Mess Member</div>
+              </div>
+              <button class="dropdown-item" style="width: 100%; border: none; background: none;" onclick="Auth.openProfileModal()">
+                <img src="assets/icons/user.png" style="width: 16px; height: 16px;" alt="">
+                <span>Profile Settings</span>
+              </button>
+              <button class="dropdown-item" style="width: 100%; border: none; background: none;" onclick="Auth.openPasswordModal()">
+                <img src="assets/icons/settings.png" style="width: 16px; height: 16px;" alt="">
+                <span>Change Password</span>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" style="width: 100%; border: none; background: none; color: var(--danger);" onclick="Auth.logout()">
+                <span>🚪</span>
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Dynamic Content Viewport -->
+      <main class="content-area" id="viewContainer">
+        <!-- Rendered dynamically by route controllers -->
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- Global Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Vendor Scripts (Local offline fallbacks) -->
+  <script src="vendor/chart.umd.min.js"></script>
+
+  <!-- Application Modules -->
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/complaints.js"></script>
+  <script src="js/billing.js"></script>
+  <script src="js/expenses.js"></script>
+  <script src="js/announcements.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/staff.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

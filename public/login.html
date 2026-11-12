@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | IIIT Bhubaneswar Mess Management System</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--color-paper-warmth, #f6f5f4);
+      padding: 24px 16px;
+      font-family: var(--font-notioninter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+      color: var(--color-ink-black, #111111);
+    }
+    .auth-card {
+      background: var(--color-pure-white, #ffffff);
+      border: 1px solid var(--border-light, rgba(0, 0, 0, 0.08));
+      border-radius: var(--radius-card, 12px);
+      box-shadow: none;
+      width: 100%;
+      max-width: 440px;
+      padding: 38px 32px;
+    }
+    .auth-brand {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .auth-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+      display: block;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+    }
+    .auth-brand h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-ink-black, #111111);
+      letter-spacing: -0.025em;
+      margin: 0 0 4px 0;
+    }
+    .auth-brand p {
+      font-size: 13px;
+      color: var(--color-graphite, #615d59);
+      margin: 0;
+      line-height: 1.4;
+    }
+    .auth-highlight-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill, 9999px);
+      font-size: 11px;
+      font-weight: 600;
+      background-color: var(--color-sky-tint, #e6f3fe);
+      color: var(--color-notion-blue, #0075de);
+      border: 1px solid rgba(0, 117, 222, 0.15);
+      margin-bottom: 12px;
+    }
+    .password-input-wrapper {
+      position: relative;
+    }
+    .toggle-pass-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--color-stone, #757575);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .demo-accounts-panel {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light, rgba(0, 0, 0, 0.08));
+    }
+    .demo-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-stone, #757575);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .demo-buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .demo-btn {
+      background-color: var(--color-paper-warmth, #f6f5f4);
+      border: 1px solid var(--border-light, rgba(0, 0, 0, 0.08));
+      border-radius: 8px;
+      padding: 10px 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--color-ink-black, #111111);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .demo-btn:hover {
+      background-color: var(--color-sky-tint, #e6f3fe);
+      border-color: rgba(0, 117, 222, 0.25);
+      color: var(--color-notion-blue, #0075de);
+      transform: translateY(-1px);
+    }
+    .demo-icon-3d {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-card">
+    <div class="auth-brand">
+      <img src="assets/icons/brand-bowl.png" alt="IIIT Mess Logo" class="auth-logo">
+      <div class="auth-highlight-pill">Institutional Dining Portal</div>
+      <h1>IIIT Bhubaneswar</h1>
+      <p>Mess Management & Dining Information System</p>
+    </div>
+
+    <div id="loginAlert" style="display: none; margin-bottom: 18px;" class="badge badge-danger btn-block"></div>
+
+    <form id="loginForm" autocomplete="on">
+      <div class="form-group">
+        <label for="identifier" class="form-label">Email or Student ID <span class="required">*</span></label>
+        <input type="text" id="identifier" class="form-input" placeholder="e.g. b121001@iiit-bh.ac.in or B121001" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label for="password" class="form-label" style="margin-bottom: 0;">Password <span class="required">*</span></label>
+        </div>
+        <div class="password-input-wrapper">
+          <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+          <button type="button" class="toggle-pass-btn" id="togglePasswordBtn">Show</button>
+        </div>
+      </div>
+
+      <button type="submit" id="loginSubmitBtn" class="btn btn-primary btn-block btn-lg" style="margin-top: 22px;">
+        Sign In to Portal
+      </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 18px; font-size: 13px; color: var(--color-graphite, #615d59);">
+      New student? <a href="register.html" style="color: var(--color-notion-blue, #0075de); font-weight: 600; text-decoration: none;">Register here</a>
+    </div>
+
+    <!-- Demo Quick-Logins for Evaluation -->
+    <div class="demo-accounts-panel">
+      <div class="demo-title">⚡ Instant Demo Login (1-Click)</div>
+      <div class="demo-buttons-grid">
+        <button type="button" class="demo-btn" onclick="fillDemo('student')">
+          <img src="assets/icons/students.png" alt="Student" class="demo-icon-3d">
+          <span>Student</span>
+        </button>
+        <button type="button" class="demo-btn" onclick="fillDemo('staff')">
+          <img src="assets/icons/staff.png" alt="Mess Staff" class="demo-icon-3d">
+          <span>Mess Staff</span>
+        </button>
+        <button type="button" class="demo-btn" onclick="fillDemo('admin')">
+          <img src="assets/icons/shield.png" alt="Admin" class="demo-icon-3d">
+          <span>Admin</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/ui.js"></script>
+  <script>
+    const form = document.getElementById('loginForm');
+    const identifierInput = document.getElementById('identifier');
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+    const submitBtn = document.getElementById('loginSubmitBtn');
+    const alertBox = document.getElementById('loginAlert');
+
+    // Toggle password visibility
+    togglePasswordBtn.addEventListener('click', () => {
+      const isPass = passwordInput.type === 'password';
+      passwordInput.type = isPass ? 'text' : 'password';
+      togglePasswordBtn.textContent = isPass ? 'Hide' : 'Show';
+    });
+
+    // Check if already authenticated
+    fetch('/api/auth/me')
+      .then(r => r.json())
+      .then(data => {
+        if (data.authenticated) {
+          window.location.href = 'index.html';
+        }
+      })
+      .catch(() => {});
+
+    function fillDemo(role) {
+      if (role === 'student') {
+        identifierInput.value = 'b121001@iiit-bh.ac.in';
+        passwordInput.value = 'Student@123';
+      } else if (role === 'staff') {
+        identifierInput.value = 'staff1@iiit-bh.ac.in';
+        passwordInput.value = 'Staff@123';
+      } else if (role === 'admin') {
+        identifierInput.value = 'admin@iiit-bh.ac.in';
+        passwordInput.value = 'Admin@123';
+      }
+      form.dispatchEvent(new Event('submit'));
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alertBox.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Verifying credentials...';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({
+            identifier: identifierInput.value.trim(),
+            password: passwordInput.value
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || 'Authentication failed');
+        }
+
+        UI.toast({
+          title: 'Login Successful',
+          message: `Welcome back, ${data.user.full_name}!`,
+          type: 'success'
+        });
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 500);
+
+      } catch (err) {
+        alertBox.textContent = err.message;
+        alertBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In to Portal';
+      }
+    });
+  </script>
+</body>
+</html>

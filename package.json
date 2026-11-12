@@ -1,0 +1,29 @@
+{
+  "name": "iiit-mess-management",
+  "version": "1.0.0",
+  "description": "IIIT Bhubaneswar Mess Management System - Full-Stack Web Application",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "seed": "node server/database/seed.js --force",
+    "test": "node tests/api.test.js"
+  },
+  "keywords": [
+    "iiit",
+    "mess-management",
+    "express",
+    "sqlite",
+    "iwt"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.0.1",
+    "express-session": "^1.18.1",
+    "morgan": "^1.10.0"
+  }
+}

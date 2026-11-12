@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Student Account | IIIT Bhubaneswar Mess</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--color-paper-warmth, #f6f5f4);
+      padding: 32px 16px;
+      font-family: var(--font-notioninter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+      color: var(--color-ink-black, #111111);
+    }
+    .auth-card {
+      background: var(--color-pure-white, #ffffff);
+      border: 1px solid var(--border-light, rgba(0, 0, 0, 0.08));
+      border-radius: var(--radius-card, 12px);
+      box-shadow: none;
+      width: 100%;
+      max-width: 580px;
+      padding: 38px 34px;
+    }
+    .auth-brand {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .auth-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      margin: 0 auto 10px;
+      display: block;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+    }
+    .auth-highlight-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill, 9999px);
+      font-size: 11px;
+      font-weight: 600;
+      background-color: var(--color-sky-tint, #e6f3fe);
+      color: var(--color-notion-blue, #0075de);
+      border: 1px solid rgba(0, 117, 222, 0.15);
+      margin-bottom: 10px;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-card">
+    <div class="auth-brand">
+      <img src="assets/icons/brand-bowl.png" alt="IIIT Mess Logo" class="auth-logo">
+      <div class="auth-highlight-pill">Student Onboarding</div>
+      <h1 style="font-size: 20px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 4px 0;">Student Portal Registration</h1>
+      <p style="font-size: 12.5px; color: var(--color-graphite, #615d59); margin: 0;">Create your mess account to view menus, pay dues & track attendance</p>
+    </div>
+
+    <div id="regAlert" style="display: none; margin-bottom: 18px;" class="badge badge-danger btn-block"></div>
+
+    <form id="registerForm">
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="fullName" class="form-label">Full Name <span class="required">*</span></label>
+          <input type="text" id="fullName" class="form-input" placeholder="e.g. Priya Ranjan Das" required>
+        </div>
+
+        <div class="form-group">
+          <label for="studentId" class="form-label">Student ID / Roll No <span class="required">*</span></label>
+          <input type="text" id="studentId" class="form-input" placeholder="e.g. B121025" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Institute Email <span class="required">*</span></label>
+        <input type="email" id="email" class="form-input" placeholder="e.g. b121025@iiit-bh.ac.in" required>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="department" class="form-label">Department <span class="required">*</span></label>
+          <select id="department" class="form-select" required>
+            <option value="" disabled selected>Select Branch</option>
+            <option value="CSE">Computer Science & Engineering (CSE)</option>
+            <option value="ECE">Electronics & Communication (ECE)</option>
+            <option value="EEE">Electrical & Electronics (EEE)</option>
+            <option value="IT">Information Technology (IT)</option>
+            <option value="CE">Computer Engineering (CE)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="yearOfStudy" class="form-label">Year of Study <span class="required">*</span></label>
+          <select id="yearOfStudy" class="form-select" required>
+            <option value="" disabled selected>Select Year</option>
+            <option value="1">1st Year (B.Tech)</option>
+            <option value="2">2nd Year (B.Tech)</option>
+            <option value="3">3rd Year (B.Tech)</option>
+            <option value="4">4th Year (B.Tech)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="hostelRoom" class="form-label">Hostel & Room No <span class="required">*</span></label>
+          <input type="text" id="hostelRoom" class="form-input" placeholder="e.g. Hostel-1, Room 214" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="form-label">Mobile Number</label>
+          <input type="tel" id="phone" class="form-input" placeholder="e.g. +91 98765 43210">
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="password" class="form-label">Password (min 6 chars) <span class="required">*</span></label>
+          <input type="password" id="password" class="form-input" placeholder="••••••••" minlength="6" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword" class="form-label">Confirm Password <span class="required">*</span></label>
+          <input type="password" id="confirmPassword" class="form-input" placeholder="••••••••" minlength="6" required>
+        </div>
+      </div>
+
+      <button type="submit" id="regSubmitBtn" class="btn btn-primary btn-block btn-lg" style="margin-top: 14px;">
+        Complete Registration
+      </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 18px; font-size: 13px; color: var(--color-graphite, #615d59);">
+      Already have an account? <a href="login.html" style="color: var(--color-notion-blue, #0075de); font-weight: 600; text-decoration: none;">Sign in here</a>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/ui.js"></script>
+  <script>
+    const regForm = document.getElementById('registerForm');
+    const alertBox = document.getElementById('regAlert');
+    const submitBtn = document.getElementById('regSubmitBtn');
+
+    regForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alertBox.style.display = 'none';
+
+      const pass = document.getElementById('password').value;
+      const cpass = document.getElementById('confirmPassword').value;
+
+      if (pass !== cpass) {
+        alertBox.textContent = 'Passwords do not match.';
+        alertBox.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating account...';
+
+      const payload = {
+        full_name: document.getElementById('fullName').value.trim(),
+        student_id: document.getElementById('studentId').value.trim().toUpperCase(),
+        email: document.getElementById('email').value.trim().toLowerCase(),
+        department: document.getElementById('department').value,
+        year_of_study: parseInt(document.getElementById('yearOfStudy').value, 10),
+        hostel_room: document.getElementById('hostelRoom').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        password: pass,
+        confirm_password: cpass
+      };
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || 'Registration failed');
+        }
+
+        UI.toast({
+          title: 'Account Registered',
+          message: 'Welcome to IIIT Bhubaneswar Mess Management System!',
+          type: 'success'
+        });
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 600);
+
+      } catch (err) {
+        alertBox.textContent = err.message;
+        alertBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Complete Registration';
+      }
+    });
+  </script>
+</body>
+</html>
