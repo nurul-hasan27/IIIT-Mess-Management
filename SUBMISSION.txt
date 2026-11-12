@@ -1,0 +1,90 @@
+================================================================================
+IIIT BHUBANESWAR – INTERNET AND WEB TECHNOLOGY (IWT) LAB PROJECT SUBMISSION
+================================================================================
+
+PROJECT TITLE:
+IIIT Bhubaneswar – Mess Management System
+
+STUDENT DETAILS:
+--------------------------------------------------------------------------------
+Name       : Md Nurul Hasan
+Student ID : B423036
+Branch     : Information Technology (IT)
+Course     : Internet and Web Technology (IWT) Laboratory
+
+
+IMPORTANT PROJECT LINKS:
+--------------------------------------------------------------------------------
+1. Live Web Application URL :
+   https://iiit-mess-management-l2ai.onrender.com/login.html
+
+2. Video Demonstration (Google Drive) :
+   https://drive.google.com/file/d/1GWhI0GiHCPJNSHZYVNgKIQs_yj3Q5Fnk/view?usp=sharing
+
+3. GitHub Source Code Repository :
+   https://github.com/nurul-hasan27/IIIT-Mess-Management
+
+
+DEMO LOGIN CREDENTIALS:
+--------------------------------------------------------------------------------
+(Note: You can also use the 1-Click Demo login buttons available on the login page)
+
+1. Administrator (Mess Warden / Committee)
+   - Email    : admin@iiit-bh.ac.in
+   - Password : Admin@123
+   - Role     : Full system control, billing, menus, analytics, settings
+
+2. Mess Staff (Catering Supervisor)
+   - Email    : staff1@iiit-bh.ac.in
+   - Password : Staff@123
+   - Role     : Counter attendance marking, expected headcounts, catering issues
+
+3. Student (Hostel Resident)
+   - Email    : b121001@iiit-bh.ac.in
+   - Password : Student@123
+   - Role     : View menus, rate meals, check attendance, pay bills, grievances
+
+
+HOW TO NAVIGATE THE PROJECT:
+--------------------------------------------------------------------------------
+Step 1: Open the live URL (https://iiit-mess-management-l2ai.onrender.com/login.html).
+Step 2: Log in using either the 1-Click Demo buttons or the credentials above.
+Step 3: Explore by User Persona:
+
+  A. As a STUDENT:
+     - Dashboard       : Check today's Breakfast, Lunch, and Dinner menus with dietary tags.
+     - Rate Meal       : Click "Rate Meal" on any meal card to submit ratings and feedback.
+     - Weekly Menu     : Click "Weekly Menu" in the sidebar to view the 7-day dining schedule.
+     - Attendance      : View your verified attendance percentage and session check-ins.
+     - Grievance Desk  : Click "Complaints" -> "Raise Complaint" to submit a maintenance or food ticket.
+     - My Bills        : View monthly mess charges, approved leave rebates, and click "Pay" to record a test payment.
+
+  B. As MESS STAFF:
+     - Attendance Desk : Go to "Live Attendance" -> select meal session -> click "Mark Present" to test real-time counter check-in.
+     - Kitchen Headcount: View expected vs. actual dining attendance to prevent food waste.
+
+  C. As an ADMINISTRATOR:
+     - Analytics       : View Chart.js visualizations for Revenue vs. Expenses, Turnout Trends, and Ratings.
+     - Student Roster  : Search and filter registered students by roll number or branch.
+     - Menu Management : Schedule daily recipes, edit timings, or duplicate menus across days.
+     - Billing Engine  : Generate batch monthly invoices for all students and click "Export CSV" for report downloads.
+
+
+KEY FEATURES SUMMARY:
+--------------------------------------------------------------------------------
+- Digital Dining Schedules : Real-time daily meal items, timings, and weekly planning.
+- Automated Invoicing      : Auto-calculates base fees and applies per-day leave rebates (Rs 90/day).
+- Live Counter Attendance  : Idempotent dining check-ins with attendance rate tracking.
+- Closed-Loop Grievances   : Ticket-based complaint lifecycle (Submitted -> In Progress -> Resolved).
+- Institutional Analytics  : Visual Chart.js metrics for financial intelligence and student turnout.
+- Responsive Modern UI     : Clean Notion-inspired layout with responsive mobile navigation and dark mode toggle.
+
+
+TECHNOLOGY STACK:
+--------------------------------------------------------------------------------
+- Frontend  : Semantic HTML5, Pure CSS3 (Flexbox/Grid), Vanilla JavaScript (ES6+), Chart.js
+- Backend   : Node.js, Express.js (REST API, express-session, bcryptjs)
+- Database  : SQLite with better-sqlite3 in Write-Ahead Logging (WAL) mode
+- Hosting   : Render Cloud Web Service (24/7 persistent server)
+
+================================================================================
