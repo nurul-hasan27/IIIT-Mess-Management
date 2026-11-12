@@ -111,7 +111,7 @@ const Dashboard = {
       : recentActivity.payments.map(p => `
         <div class="activity-item">
           <div class="activity-badge">
-            <img src="assets/icons/payments.png" style="width: 20px; height: 20px; object-fit: contain;" alt="Payment">
+            <img src="assets/icons/payments.png" alt="Payment">
           </div>
           <div class="activity-details">
             <div class="activity-title">${UI.formatCurrency(p.amount)} paid via ${p.payment_method}</div>
@@ -125,7 +125,7 @@ const Dashboard = {
       : recentActivity.complaints.map(c => `
         <div class="activity-item">
           <div class="activity-badge">
-            <img src="assets/icons/complaints.png" style="width: 20px; height: 20px; object-fit: contain;" alt="Complaint">
+            <img src="assets/icons/complaints.png" alt="Complaint">
           </div>
           <div class="activity-details">
             <div class="activity-title">${c.subject}</div>
@@ -135,44 +135,52 @@ const Dashboard = {
       `).join('');
 
     container.innerHTML = `
-      <!-- Welcome Section -->
+      <!-- Welcome Hero Banner -->
       <div class="welcome-banner">
-        <div class="highlight-pill">
-          <img src="assets/icons/brand-bowl.png" style="width: 14px; height: 14px; object-fit: contain;" alt="Bowl">
-          Student Dining Portal
+        <div class="welcome-content">
+          <div class="welcome-pill-row">
+            <span class="highlight-pill">
+              <img src="assets/icons/brand-bowl.png" class="pill-3d-icon" alt="">
+              Student Dining Portal
+            </span>
+            <span class="welcome-date-text">📅 ${todayStr}</span>
+          </div>
+          <h1 class="welcome-greeting">Hello, ${user.full_name}! 👋</h1>
+          <p class="welcome-subtext">
+            Welcome to your centralized dining dashboard.
+            ${user.hostel_room ? `Room: <strong>${user.hostel_room}</strong> • ` : ''} Roll: <strong>${user.student_id}</strong>
+          </p>
         </div>
-        <div class="welcome-greeting">Hello, ${user.full_name}! 👋</div>
-        <div class="welcome-subtext">
-          Today is ${todayStr}. Welcome to your centralized dining dashboard.
-          ${user.hostel_room ? `Room: <strong>${user.hostel_room}</strong> • ` : ''} Roll: <strong>${user.student_id}</strong>
+        <div class="welcome-graphic">
+          <img src="assets/icons/brand-bowl.png" class="welcome-3d-graphic" alt="IIIT Mess">
         </div>
       </div>
 
       <!-- Quick Actions -->
       <div class="quick-actions-bar">
         <button class="btn btn-secondary" onclick="Nav.navigate('#menu-today')">
-          <img src="assets/icons/menu-today.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Today's Menu
+          <img src="assets/icons/menu-today.png" alt="">
+          <span>Today's Menu</span>
         </button>
         <button class="btn btn-secondary" onclick="Nav.navigate('#menu-weekly')">
-          <img src="assets/icons/menu-weekly.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Weekly Menu
+          <img src="assets/icons/menu-weekly.png" alt="">
+          <span>Weekly Menu</span>
         </button>
         <button class="btn btn-secondary" onclick="Nav.navigate('#feedback')">
-          <img src="assets/icons/feedback.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Rate Mess Food
+          <img src="assets/icons/feedback.png" alt="">
+          <span>Rate Mess Food</span>
         </button>
         <button class="btn btn-secondary" onclick="Complaints.openCreateModal()">
-          <img src="assets/icons/complaints.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Raise a Grievance
+          <img src="assets/icons/complaints.png" alt="">
+          <span>Raise a Grievance</span>
         </button>
         <button class="btn btn-primary" onclick="Billing.openPaymentModal()">
-          <img src="assets/icons/wallet.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle; filter: brightness(0) invert(1);">
-          Pay Mess Dues
+          <img src="assets/icons/wallet.png" alt="" style="filter: brightness(0) invert(1);">
+          <span>Pay Mess Dues</span>
         </button>
       </div>
 
-      <!-- Statistics Cards (Real DB) -->
+      <!-- Statistics Cards (4 Columns) -->
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-icon-wrapper sky">
@@ -239,11 +247,11 @@ const Dashboard = {
         </div>
       </div>
 
-      <!-- Bottom Split: Announcements & Activity -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
-        <div class="card">
+      <!-- Bottom Split: Announcements & Activity (50% / 50%) -->
+      <div class="dashboard-split-grid">
+        <div class="card" style="margin-bottom: 0;">
           <div class="card-header">
-            <div class="card-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title">
               <img src="assets/icons/announcements.png" style="width: 18px; height: 18px;" alt="Announcements">
               Latest Announcements
             </div>
@@ -254,9 +262,9 @@ const Dashboard = {
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" style="margin-bottom: 0;">
           <div class="card-header">
-            <div class="card-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title">
               <img src="assets/icons/dashboard.png" style="width: 18px; height: 18px;" alt="Activity">
               Recent Activity
             </div>
@@ -289,46 +297,54 @@ const Dashboard = {
     container.innerHTML = `
       <!-- Welcome Header -->
       <div class="welcome-banner">
-        <div class="highlight-pill">
-          <img src="assets/icons/shield.png" style="width: 14px; height: 14px; object-fit: contain;" alt="Admin Shield">
-          Administration Console
+        <div class="welcome-content">
+          <div class="welcome-pill-row">
+            <span class="highlight-pill">
+              <img src="assets/icons/shield.png" class="pill-3d-icon" alt="">
+              Administration Console
+            </span>
+            <span class="welcome-date-text">Central Operations & Audits</span>
+          </div>
+          <h1 class="welcome-greeting">Administrator Control Center 🛡️</h1>
+          <p class="welcome-subtext">
+            IIIT Bhubaneswar Central Mess Operations & Financial Management. All metrics computed live from SQLite database.
+          </p>
         </div>
-        <div class="welcome-greeting">Administrator Control Center 🛡️</div>
-        <div class="welcome-subtext">
-          IIIT Bhubaneswar Central Mess Operations & Financial Management. All metrics computed live from SQLite database.
+        <div class="welcome-graphic">
+          <img src="assets/icons/shield.png" class="welcome-3d-graphic" alt="Admin">
         </div>
       </div>
 
       <!-- Quick Actions -->
       <div class="quick-actions-bar">
         <button class="btn btn-secondary" onclick="Admin.openAddStudentModal()">
-          <img src="assets/icons/students.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Add Student
+          <img src="assets/icons/students.png" alt="">
+          <span>Add Student</span>
         </button>
         <button class="btn btn-secondary" onclick="Menu.openCreateModal()">
-          <img src="assets/icons/menu-today.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Add Daily Menu
+          <img src="assets/icons/menu-today.png" alt="">
+          <span>Add Daily Menu</span>
         </button>
         <button class="btn btn-secondary" onclick="Billing.openGenerateModal()">
-          <img src="assets/icons/bills.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Generate Bills
+          <img src="assets/icons/bills.png" alt="">
+          <span>Generate Bills</span>
         </button>
         <button class="btn btn-secondary" onclick="Announcements.openCreateModal()">
-          <img src="assets/icons/announcements.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Publish Announcement
+          <img src="assets/icons/announcements.png" alt="">
+          <span>Publish Announcement</span>
         </button>
         <button class="btn btn-secondary" onclick="Expenses.openCreateModal()">
-          <img src="assets/icons/expenses.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Record Expense
+          <img src="assets/icons/expenses.png" alt="">
+          <span>Record Expense</span>
         </button>
         <button class="btn btn-primary" onclick="Billing.exportCSV()">
-          <img src="assets/icons/analytics.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle; filter: brightness(0) invert(1);">
-          Export Billing CSV
+          <img src="assets/icons/analytics.png" alt="" style="filter: brightness(0) invert(1);">
+          <span>Export Billing CSV</span>
         </button>
       </div>
 
-      <!-- Overview Statistics Grid -->
-      <div class="stats-grid">
+      <!-- Overview Statistics Grid (3 Columns x 2 Rows = 6 Cards Balanced) -->
+      <div class="stats-grid-3">
         <div class="stat-card">
           <div class="stat-icon-wrapper blue">
             <img src="assets/icons/students.png" class="stat-3d-icon" alt="Students">
@@ -396,11 +412,11 @@ const Dashboard = {
         </div>
       </div>
 
-      <!-- Chart.js Analytics Grid -->
+      <!-- Chart.js Analytics Grid (2 Columns) -->
       <div class="charts-grid">
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="chart-title">
               <img src="assets/icons/analytics.png" style="width: 18px; height: 18px;" alt="Chart">
               Revenue vs Expenses Trend (Last 6 Months)
             </div>
@@ -412,7 +428,7 @@ const Dashboard = {
 
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="chart-title">
               <img src="assets/icons/expenses.png" style="width: 18px; height: 18px;" alt="Expenses">
               Current Month Expense Breakdown
             </div>
@@ -424,7 +440,7 @@ const Dashboard = {
 
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="chart-title">
               <img src="assets/icons/attendance.png" style="width: 18px; height: 18px;" alt="Attendance">
               Meal Attendance by Session (Past 7 Days)
             </div>
@@ -436,7 +452,7 @@ const Dashboard = {
 
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="chart-title">
               <img src="assets/icons/feedback.png" style="width: 18px; height: 18px;" alt="Feedback">
               Student Food & Hygiene Quality Ratings
             </div>
@@ -447,11 +463,11 @@ const Dashboard = {
         </div>
       </div>
 
-      <!-- Recent System Activity -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
-        <div class="card">
+      <!-- Recent System Activity (50% / 50%) -->
+      <div class="dashboard-split-grid">
+        <div class="card" style="margin-bottom: 0;">
           <div class="card-header">
-            <div class="card-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title">
               <img src="assets/icons/payments.png" style="width: 18px; height: 18px;" alt="Payments">
               Recent Payments
             </div>
@@ -462,7 +478,7 @@ const Dashboard = {
               ${recentActivity.payments.map(p => `
                 <div class="activity-item">
                   <div class="activity-badge">
-                    <img src="assets/icons/payments.png" style="width: 18px; height: 18px; object-fit: contain;" alt="Payment">
+                    <img src="assets/icons/payments.png" alt="Payment">
                   </div>
                   <div class="activity-details">
                     <div class="activity-title">${UI.formatCurrency(p.amount)} from ${p.student_name} (${p.student_roll})</div>
@@ -474,9 +490,9 @@ const Dashboard = {
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" style="margin-bottom: 0;">
           <div class="card-header">
-            <div class="card-title" style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title">
               <img src="assets/icons/complaints.png" style="width: 18px; height: 18px;" alt="Complaints">
               Recent Complaints
             </div>
@@ -487,7 +503,7 @@ const Dashboard = {
               ${recentActivity.complaints.map(c => `
                 <div class="activity-item">
                   <div class="activity-badge">
-                    <img src="assets/icons/complaints.png" style="width: 18px; height: 18px; object-fit: contain;" alt="Complaint">
+                    <img src="assets/icons/complaints.png" alt="Complaint">
                   </div>
                   <div class="activity-details">
                     <div class="activity-title">${c.subject}</div>
@@ -694,24 +710,32 @@ const Dashboard = {
 
     container.innerHTML = `
       <div class="welcome-banner">
-        <div class="highlight-pill">
-          <img src="assets/icons/staff.png" style="width: 14px; height: 14px; object-fit: contain;" alt="Staff">
-          Catering & Kitchen Operations
+        <div class="welcome-content">
+          <div class="welcome-pill-row">
+            <span class="highlight-pill">
+              <img src="assets/icons/staff.png" class="pill-3d-icon" alt="">
+              Catering Operations
+            </span>
+            <span class="welcome-date-text">Daily Kitchen Schedules</span>
+          </div>
+          <h1 class="welcome-greeting">Mess Catering Operations 👨‍🍳</h1>
+          <p class="welcome-subtext">
+            Daily serving schedules, meal attendance rosters & dining hall grievance maintenance.
+          </p>
         </div>
-        <div class="welcome-greeting">Mess Catering Operations 👨‍🍳</div>
-        <div class="welcome-subtext">
-          Daily serving schedules, meal attendance rosters & dining hall grievance maintenance.
+        <div class="welcome-graphic">
+          <img src="assets/icons/staff.png" class="welcome-3d-graphic" alt="Staff">
         </div>
       </div>
 
       <div class="quick-actions-bar">
         <button class="btn btn-primary" onclick="Attendance.loadAdmin()">
-          <img src="assets/icons/attendance.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle; filter: brightness(0) invert(1);">
-          Live Meal Attendance
+          <img src="assets/icons/attendance.png" alt="" style="filter: brightness(0) invert(1);">
+          <span>Live Meal Attendance</span>
         </button>
         <button class="btn btn-secondary" onclick="Nav.navigate('#menu-today')">
-          <img src="assets/icons/menu-today.png" style="width: 16px; height: 16px; margin-right: 6px; vertical-align: middle;">
-          Today's Kitchen Menu
+          <img src="assets/icons/menu-today.png" alt="">
+          <span>Today's Kitchen Menu</span>
         </button>
       </div>
 
@@ -725,9 +749,9 @@ const Dashboard = {
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" style="margin-bottom: 0;">
         <div class="card-header">
-          <div class="card-title" style="display: flex; align-items: center; gap: 8px;">
+          <div class="card-title">
             <img src="assets/icons/complaints.png" style="width: 18px; height: 18px;" alt="Complaints">
             Assigned Grievance Tickets
           </div>

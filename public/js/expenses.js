@@ -93,8 +93,8 @@ const Expenses = {
         </div>
 
         <!-- Expense Total & Breakdown -->
-        <div class="stats-grid" style="grid-template-columns: 1fr 2fr;">
-          <div class="stat-card">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 16px; margin-bottom: 24px;">
+          <div class="stat-card" style="margin-bottom: 0;">
             <div class="stat-icon-wrapper amber">
               <img src="assets/icons/expenses.png" class="stat-3d-icon" alt="Expenses">
             </div>

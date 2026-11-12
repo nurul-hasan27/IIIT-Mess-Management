@@ -57,6 +57,30 @@ app.use(
 // CSRF Protection for state-changing API requests
 app.use('/api', csrfCheck);
 
+// Dev auto-login for testing & visual inspection
+if (process.env.NODE_ENV !== 'production') {
+  app.get('/dev-login/:role', (req, res) => {
+    const role = req.params.role;
+    const db = require('./config/database');
+    const user = db.prepare('SELECT * FROM users WHERE role = ? LIMIT 1').get(role);
+    if (user) {
+      req.session.user = {
+        id: user.id,
+        student_id: user.student_id,
+        full_name: user.full_name,
+        email: user.email,
+        role: user.role,
+        department: user.department,
+        year_of_study: user.year_of_study,
+        hostel_room: user.hostel_room,
+        phone: user.phone
+      };
+      return res.redirect('/index.html');
+    }
+    res.status(404).send('Role not found');
+  });
+}
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/students', studentRoutes);

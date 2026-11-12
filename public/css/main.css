@@ -299,7 +299,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 28px;
+  padding: 0 32px;
   position: sticky;
   top: 0;
   z-index: 90;
@@ -399,10 +399,11 @@ html, body {
 
 /* Page Content Viewport */
 .content-area {
-  padding: 28px 32px;
+  padding: 28px 32px 64px;
   flex: 1;
-  max-width: 1400px;
+  max-width: 1360px;
   width: 100%;
+  margin: 0 auto;
 }
 
 /* Mobile Drawer Overlay */

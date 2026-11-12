@@ -57,7 +57,7 @@ router.get('/weekly', (req, res, next) => {
       const y = d.getFullYear();
       const m = String(d.getMonth() + 1).padStart(2, '0');
       const day = String(d.getDate()).padStart(2, '0');
-      dates.push(`${y}-${m}-${d}`);
+      dates.push(`${y}-${m}-${day}`);
     }
 
     const placeholders = dates.map(() => '?').join(',');

@@ -62,8 +62,8 @@ const Billing = {
           </div>
         </div>
 
-        <!-- Dues Overview Cards -->
-        <div class="stats-grid">
+        <!-- Dues Overview Cards (3 Equal Columns) -->
+        <div class="stats-grid-3">
           <div class="stat-card">
             <div class="stat-icon-wrapper ${totalDue > 0 ? 'rose' : 'green'}">
               <img src="assets/icons/wallet.png" class="stat-3d-icon" alt="Dues">
@@ -292,8 +292,8 @@ const Billing = {
           </div>
         </div>
 
-        <!-- Overview Metric Cards -->
-        <div class="stats-grid">
+        <!-- Overview Metric Cards (3 Equal Columns) -->
+        <div class="stats-grid-3">
           <div class="stat-card">
             <div class="stat-icon-wrapper blue">
               <img src="assets/icons/bills.png" class="stat-3d-icon" alt="Invoiced">
